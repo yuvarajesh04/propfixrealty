@@ -1,0 +1,8 @@
+.explore-more-button {
+    transition: background-color 0.3s ease;
+}
+
+.explore-more-button:hover {
+    color: red;
+    background-color: #e0e0e0;
+}

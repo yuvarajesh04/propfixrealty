@@ -1,0 +1,152 @@
+/* Navigation buttons base styles */
+.previous-btn button, 
+.next-btn button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    transition: all 0.2s ease;
+}
+
+.previous-btn button:hover, 
+.next-btn button:hover {
+    background-color: #e9ecef;
+    transform: scale(1.05);
+}
+
+.previous-btn button img, 
+.next-btn button img {
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+}
+
+/* Project body layout */
+.project-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    width: 100%;
+}
+
+/* Navigation buttons positioning */
+.previous-btn, 
+.next-btn {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Project cards container */
+.project-cards-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.project-cards-container .row {
+    margin: 0;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 991px) {
+    .project-body {
+        gap: 10px;
+    }
+    
+    .previous-btn button, 
+    .next-btn button {
+        height: 35px;
+        width: 35px;
+    }
+    
+    .previous-btn button img, 
+    .next-btn button img {
+        height: 18px;
+        width: 18px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .project-body {
+        position: relative;
+        padding: 0; /* Remove padding - buttons will overlay */
+        gap: 0;
+        justify-content: stretch;
+    }
+    
+    .previous-btn {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+    }
+    
+    .next-btn {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+    }
+    
+    .project-cards-container {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .project-cards-container .row {
+        margin: 0;
+    }
+    
+    .project-cards-container .col-12 {
+        padding: 0 15px;
+    }
+    
+    .previous-btn button, 
+    .next-btn button {
+        height: 40px;
+        width: 40px;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .previous-btn button:hover, 
+    .next-btn button:hover {
+        background-color: rgba(255, 255, 255, 1);
+        transform: scale(1.05);
+    }
+}
+
+/* Additional project container styles for better alignment */
+.project-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.project-header {
+    width: 100%;
+}
+
+.heading {
+    margin-bottom: 1.5rem !important;
+}
+
+/* Ensure project cards are properly centered */
+.project-cards-container .col-12 {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,75 @@
+.footer {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.footer-top h2 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+}
+
+/* Footer card styling */
+.c-footer-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid rgb(202, 198, 198);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.c-footer-card img {
+  width: 54px;
+  height: 52px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.c-footer-card:hover {
+  border: 1px solid #25aae1;
+}
+
+.c-footer-card:hover img {
+  width: 60px;
+  height: 60px;
+  transform: scale(1.1);
+}
+
+/* Address section */
+.address-details p {
+  font-size: 0.95rem;
+}
+
+/* Navigation links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer .nav-link, title {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer .nav-link:hover, .title {
+  color: #25aae1;
+}
+
+.company-address {
+  transition: all 1s ease;
+  cursor: pointer;
+}
+
+.company-address:hover {
+  color: #25aae1;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .footer-links {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .address-details {
+    text-align: center;
+  }
+}

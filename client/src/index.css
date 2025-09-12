@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    overflow-y: hidden;
+    font-style: normal;
+    background-color: white;
+    margin-top: 70px; /* Add space for fixed navbar */
+}
+
+body {
+  overflow: auto;               /* Enable scrolling */
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Edge */
+}
+
+
+.nav-link.active {
+  color: #5c9edc !important;
+  border-bottom: 2px solid #5c9edc;
+}
+
+:root {
+    --primary-color: #f0eff4;
+    --primary-blue: #2196f3;
+    --secondary-blue: #5c9edc;
+    --dark-blue: #3e86c0;
+    --text-dark: #0A1F44;
+    --text-muted: #546e90;
+    --status-green: #53b353;
+    --status-orange: #e5a13b;
+    --status-red: #b83cce;
+    --shadow-sm: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    --shadow-md: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(152, 151, 151, 0.23) 0px 3px 6px;
+    --shadow-lg: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.search-in-all-project:focus {
+    outline: none;
+}
+
+/* Common button styles */
+.btn-primary-custom {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+    background-color: var(--dark-blue);
+    transform: translateY(-2px);
+}
+
+/* Card hover effect */
+.hover-shadow {
+    transition: all 0.3s ease;
+}
+
+.hover-shadow:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.footer {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.footer-top h2 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+}
+
+/* Footer card styling */
+.c-footer-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid rgb(202, 198, 198);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.c-footer-card img {
+  width: 54px;
+  height: 52px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.c-footer-card:hover {
+  border: 1px solid #25aae1;
+}
+
+.c-footer-card:hover img {
+  width: 60px;
+  height: 60px;
+  transform: scale(1.1);
+}
+
+/* Address section */
+.address-details p {
+  font-size: 0.95rem;
+}
+
+/* Navigation links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer .nav-link, title {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer .nav-link:hover, .title {
+  color: #25aae1;
+}
+
+.company-address {
+  transition: all 1s ease;
+  cursor: pointer;
+}
+
+.company-address:hover {
+  color: #25aae1;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .footer-links {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .address-details {
+    text-align: center;
+  }
+}
