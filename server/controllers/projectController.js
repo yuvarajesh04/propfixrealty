@@ -1,8 +1,21 @@
 const Project = require("../models/projectModel");
+const connectDB = require("../config/db");
+
+// Cached DB connection for serverless
+let isConnected = false;
+async function connectOnce() {
+    if (!isConnected) {
+        await connectDB();
+        isConnected = true;
+        console.log("✅ MongoDB connected (cached)");
+    }
+}
 
 const projectController = {
   createProject: async (req, res) => {
     try {
+      await connectOnce(); // ensure DB connected
+
       const {
         title,
         des,
@@ -17,7 +30,7 @@ const projectController = {
         amenities,
       } = req.body;
 
-      // ✅ Save only relative paths (so frontend can load easily)
+      // Save relative paths for images
       const images = req.files ? req.files.map(file => `/uploads/${file.filename}`) : [];
 
       const isExist = await Project.findOne({ title });
@@ -62,6 +75,8 @@ const projectController = {
 
   getAllProjects: async (req, res) => {
     try {
+      await connectOnce(); // ensure DB connected
+
       const projects = await Project.find().sort({ createdAt: -1 });
       res.status(200).json({
         success: true,
@@ -80,20 +95,20 @@ const projectController = {
 
   deleteProject: async (req, res) => {
     try {
+      await connectOnce(); // ensure DB connected
+
       const { id } = req.params;
 
-      // Check if the project exists
       const project = await Project.findById(id);
       if (!project) {
         return res.status(404).json({ message: "Project not found", success: false });
       }
 
-      // Delete the project
       await Project.findByIdAndDelete(id);
 
       res.status(200).json({ message: "Project deleted successfully", success: true });
     } catch (error) {
-      console.error(error);
+      console.error("Delete project error:", error.message);
       res.status(500).json({ message: "Server error", success: false });
     }
   }
