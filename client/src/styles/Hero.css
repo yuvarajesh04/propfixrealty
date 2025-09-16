@@ -1,75 +1,76 @@
 .hero-section {
-    height: 80vh;
-    background: url('../assets/test.jpg') center center / cover no-repeat fixed;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 80vh;
+  background: url('../assets/test.webp') center center / cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* optional: add lazy loading via JS if needed */
 }
 
-.serch-box:focus {
-    outline: none !important;
-    box-shadow: none !important;
+.search-box:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .heading-custom {
-    text-transform: capitalize;
-    font-weight: bold;
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Overlay */
 .hero-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
 }
 
 .hero-section .container {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .gradient-text {
-    color: white;
-    font-weight: bold;
+  color: white;
+  font-weight: bold;
 }
 
 .hero-features .btn {
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .hero-features .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Mobile - smaller height */
 @media (max-width: 767px) {
-    .hero-section {
-        height: 70vh;
-    }
-    
-    .heading-custom {
-        font-size: 2rem;
-    }
+  .hero-section {
+    height: 70vh;
+  }
+
+  .heading-custom {
+    font-size: 2rem;
+  }
 }
 
 /* Extra small devices */
 @media (max-width: 576px) {
-    .hero-section {
-        height: 60vh;
-    }
-    
-    .heading-custom {
-        font-size: 1.5rem;
-    }
+  .hero-section {
+    height: 60vh;
+  }
+
+  .heading-custom {
+    font-size: 1.5rem;
+  }
 }

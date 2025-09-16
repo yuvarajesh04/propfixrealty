@@ -11,7 +11,6 @@ export default function Hero() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      // Redirect to filtered projects page
       navigate(`/all-projects?search=${encodeURIComponent(searchQuery)}`);
     }
   };
@@ -30,6 +29,11 @@ export default function Hero() {
           name="description"
           content="Discover premium plots for sale in Chennai with Propfix Realty. Verified listings, prime locations, and affordable prices for your dream home."
         />
+        <meta
+          name="keywords"
+          content="plots in Chennai, buy plots Chennai, villas Chennai, apartments Chennai, Propfix Realty"
+        />
+        <link rel="preload" as="image" href="/assets/test.webp" />
       </Helmet>
 
       <section className="hero-section d-flex justify-content-center align-items-center text-white text-center">
