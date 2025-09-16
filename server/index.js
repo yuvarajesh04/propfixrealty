@@ -41,10 +41,10 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 
-const connectDB = require("../config/db");
-const userRoutes = require("../routes/userRoutes");
-const adminRoutes = require("../routes/adminRoutes");
-const projectRoutes = require("../routes/projectRoutes");
+const connectDB = require("./config/db");
+const userRoutes = require("./routes/userRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const projectRoutes = require("./routes/projectRoutes");
 
 // Create an instance of Express
 const app = express();
