@@ -93,6 +93,7 @@ const adminController = {
             console.error("Error registering admin:", error.message);
             return res.status(500).json({
                 message: "Internal server error",
+                error: error.message,
                 success: false
             });
         }
