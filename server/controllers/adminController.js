@@ -53,7 +53,8 @@ const adminController = {
             console.error("Error logging in admin:", error);
             return res.status(500).json({
                 message: "Internal server error",
-                success: false
+                success: false,
+                error: error.message
             });
         }
     },
