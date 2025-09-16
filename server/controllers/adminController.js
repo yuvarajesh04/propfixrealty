@@ -3,20 +3,32 @@ const Users = require('../models/userModel');
 const { hashPassword, comparePassword } = require('../utils/helper');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const connectDB = require("../config/db");
 
-// Controller function to create a new admin
+// Cached DB connection for serverless
+let isConnected = false;
+async function connectOnce() {
+    if (!isConnected) {
+        await connectDB();
+        isConnected = true;
+        console.log("✅ MongoDB connected (cached)");
+    }
+}
+
 const adminController = {
+
     loginAdmin: async (req, res) => {
         try {
-            console.log("Login request body:", req.body);
+            await connectOnce(); // ensure DB connected
 
+            console.log("Login request body:", req.body);
             const { email, password } = req.body;
 
             if (!email || !password) {
-                res.status(400).json({
+                return res.status(400).json({
                     message: "Email and password are required",
                     success: false
-                })
+                });
             }
 
             const admin = await Admin.findOne({ email });
@@ -37,18 +49,14 @@ const adminController = {
                 });
             }
 
-            const token = jwt.sign(
-                { email },
-                process.env.JWT_SECRET,
-                { expiresIn: '1d' }
-            )
+            const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
             return res.status(200).json({
                 token,
                 success: true,
                 message: "Admin logged in successfully",
                 name: admin.name
-            })
+            });
         } catch (error) {
             console.error("Error logging in admin:", error);
             return res.status(500).json({
@@ -61,6 +69,8 @@ const adminController = {
 
     registerAdmin: async (req, res) => {
         try {
+            await connectOnce(); // ensure DB connected
+
             const { name, email, password } = req.body;
 
             if (!name || !email || !password) {
@@ -102,18 +112,20 @@ const adminController = {
 
     getAllClients: async (req, res) => {
         try {
-            const users = await Users.find()
+            await connectOnce(); // ensure DB connected
+
+            const users = await Users.find();
 
             res.status(200).json({
                 users,
                 success: true
-            })
+            });
         } catch (error) {
-            console.log('get all clients:', error.message)
-            res.status(500).josn({
+            console.log('get all clients:', error.message);
+            res.status(500).json({
                 success: false,
-                message: 'Internal server errror'
-            })
+                message: 'Internal server error'
+            });
         }
     }
 };
