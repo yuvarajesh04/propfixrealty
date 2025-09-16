@@ -1,7 +1,7 @@
 // services/projectApi.ts
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://propfixrealty-server.vercel.app/api";
 
 const projectApi = {
   createProject: async (formData: FormData) => {

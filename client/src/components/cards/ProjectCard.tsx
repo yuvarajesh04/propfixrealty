@@ -28,7 +28,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const [location, setLocation] = React.useState("");
   const [title, setTitle] = React.useState("");
   const navigate = useNavigate();
-  const BASE_URL = "http://localhost:5000";
+  const BASE_URL = "https://propfixrealty-server.vercel.app";
 
   const handleContact = (p: Project) => {
     setLocation(p.location);

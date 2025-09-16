@@ -7,7 +7,7 @@ interface registrationData {
     message?: string;
 }
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://propfixrealty-server.vercel.app/api';
 
 const userApi = {
     async registerClient(data: registrationData) {
