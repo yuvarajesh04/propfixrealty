@@ -147,7 +147,7 @@
 }
 
 .custom-btn.read-more {
-    background-color: #343a40;
+    background-color: #525558;
     color: white;
 }
 
@@ -208,7 +208,6 @@
     }
     
     .plot-type-and-price {
-        flex-direction: column;
         align-items: flex-start;
         gap: 8px;
     }
@@ -219,7 +218,6 @@
     }
     
     .contact-btn-readmore-btn {
-        flex-direction: column;
         gap: 10px;
     }
     

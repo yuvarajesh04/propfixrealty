@@ -105,8 +105,8 @@ export default function FindByCityCard({ city, description, price }: FindByCityC
               alignItems: 'center'
             }}
           >
-            <i className="bi bi-currency-rupee me-1" style={{ fontSize: '12px' }} />
-            {price}
+            <i className="" style={{ fontSize: '12px' }} />
+            {" " + price}
           </span>
         </div>
 

@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
 import ProjectCard from "../components/cards/ProjectCard";
-import { allProjects } from "../data/ProjectData";
 import back from "../assets/stuff/back.jpg";
 import next from "../assets/stuff/right.jpg";
 import { useNavigate } from "react-router-dom";
 import "../styles/Projects.css";
+import projectApi from "../services/projectApi";
 
 export default function Projects() {
   const [startIndex, setStartIndex] = useState(0);
   const [projectsPerPage, setProjectsPerPage] = useState(3);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [allProjects, setAllProjects] = useState<any[]>([]); // ✅ FIX
   const navigate = useNavigate();
 
-  // ✅ Handle responsive projects per page
+  // ✅ Handle responsive projects per page & fetch projects
   useEffect(() => {
     const updateProjectsPerPage = () => {
       if (window.innerWidth < 992) {
@@ -22,27 +23,37 @@ export default function Projects() {
       }
     };
 
-    updateProjectsPerPage(); // run once on mount
-    window.addEventListener("resize", updateProjectsPerPage);
+    const getProjects = async () => {
+      try {
+        const res = await projectApi.getProjects();
+        setAllProjects(res || []); // ✅ FIX: store in state
+      } catch (err) {
+        console.error("Error fetching projects:", err);
+      }
+    };
 
+    updateProjectsPerPage();
+    getProjects();
+
+    window.addEventListener("resize", updateProjectsPerPage);
     return () => {
       window.removeEventListener("resize", updateProjectsPerPage);
     };
   }, []);
 
-  // Slice visible projects
+  // ✅ Guard: prevent slice errors when no projects
   const projectsToShow = allProjects.slice(
     startIndex,
     startIndex + projectsPerPage
   );
 
   const handleShowAllProjects = () => {
-    navigate("/all-projects");
+    navigate("/show-all-projects");
   };
 
   // ✅ Prev: move back by 1 card with animation
   const handlePrev = () => {
-    if (isTransitioning) return; // Prevent rapid clicks
+    if (isTransitioning || allProjects.length === 0) return;
 
     setIsTransitioning(true);
     setTimeout(() => {
@@ -50,12 +61,12 @@ export default function Projects() {
         prev - 1 < 0 ? allProjects.length - projectsPerPage : prev - 1
       );
       setIsTransitioning(false);
-    }, 150); // Half of transition duration
+    }, 150);
   };
 
   // ✅ Next: move forward by 1 card with animation
   const handleNext = () => {
-    if (isTransitioning) return; // Prevent rapid clicks
+    if (isTransitioning || allProjects.length === 0) return;
 
     setIsTransitioning(true);
     setTimeout(() => {
@@ -63,7 +74,7 @@ export default function Projects() {
         prev + 1 > allProjects.length - projectsPerPage ? 0 : prev + 1
       );
       setIsTransitioning(false);
-    }, 150); // Half of transition duration
+    }, 150);
   };
 
   return (
@@ -79,7 +90,7 @@ export default function Projects() {
               style={{
                 background: "linear-gradient(135deg, #4f79ac, #08aef5)",
                 color: "white",
-                border: "none"
+                border: "none",
               }}
             >
               View all projects
@@ -101,12 +112,17 @@ export default function Projects() {
 
             {/* Project Cards Container */}
             <div className="project-cards-container">
-              <div className={`row project-cards-row ${isTransitioning ? 'transitioning' : ''}`}>
+              <div
+                className={`row project-cards-row ${
+                  isTransitioning ? "transitioning" : ""
+                }`}
+              >
                 {projectsToShow.map((project, index) => (
                   <div
-                    className={`col-12 ${projectsPerPage === 3 ? "col-lg-4" : ""
-                      } project-card-col`}
-                    key={`${startIndex}-${index}`} // Key includes startIndex for better animation
+                    className={`col-12 ${
+                      projectsPerPage === 3 ? "col-lg-4" : ""
+                    } project-card-col`}
+                    key={`${startIndex}-${index}`}
                   >
                     <ProjectCard project={project} />
                   </div>

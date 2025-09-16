@@ -8,9 +8,10 @@ export const slugify = (text: string) => {
         .trim();
 };
 
+// Generates SEO-friendly slugs
 export const seoSlug = (title: string, location: string) => {
-  return `${title} plots in ${location}`
+  return `${title
     .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
+    .replace(/ /g, "-")
+    .replace(/[^\w-]+/g, "")}-${location.toLowerCase()}`;
 };

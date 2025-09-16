@@ -6,6 +6,17 @@ import "../index.css";
 const Navbar: React.FC = () => {
     const location = useLocation();
 
+    const admin = localStorage.getItem('token');
+
+    const menuItems = [
+        { path: "/", label: "Home" },
+        { path: "/about", label: "About" },
+        { path: "/projects", label: "Projects" },
+        { path: "/contact", label: "Contact" },
+        ...(admin ? [{ path: "admin/add-project", label: "Add Project" }] : [])
+    ];
+
+
     return (
         <nav
             className="navbar navbar-expand-lg navbar-light py-3"
@@ -57,7 +68,7 @@ const Navbar: React.FC = () => {
 
                 {/* Offcanvas / Collapse */}
                 <div
-                    className="offcanvas offcanvas-start d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between text-bg-dark text-lg-dark bg-lg-white offcanvas-lg offcanvas-end"
+                    className="offcanvas offcanvas-start d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between bg-lg-white offcanvas-lg offcanvas-end"
                     tabIndex={-1}
                     id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel"
@@ -69,7 +80,7 @@ const Navbar: React.FC = () => {
                         </h5>
                         <button
                             type="button"
-                            className="btn-close btn-close-white"
+                            className="btn-close btn-close-dark"
                             data-bs-dismiss="offcanvas"
                             aria-label="Close"
                         ></button>
@@ -78,17 +89,11 @@ const Navbar: React.FC = () => {
                     {/* Menu Items */}
                     <div className="offcanvas-body d-lg-flex w-100 justify-content-between align-items-center py-lg-0">
                         <ul className="navbar-nav flex-grow-1 justify-content-lg-center pe-3">
-                            {[
-                                { path: "/", label: "Home" },
-                                { path: "/about", label: "About" },
-                                { path: "/projects", label: "Projects" },
-                                { path: "/contact", label: "Contact" },
-                            ].map((item) => (
+                            {menuItems.map((item) => (
                                 <li className="nav-item" key={item.path}>
                                     <Link
-                                        className={`nav-link fw-semibold ${
-                                            location.pathname === item.path ? "active" : ""
-                                        }`}
+                                        className={`nav-link fw-semibold ${location.pathname === item.path ? "active" : ""
+                                            }`}
                                         to={item.path}
                                     >
                                         {item.label}
@@ -96,6 +101,7 @@ const Navbar: React.FC = () => {
                                 </li>
                             ))}
                         </ul>
+
 
                         {/* Contact Info */}
                         <div className="text-lg-end mt-3 mt-lg-0">
