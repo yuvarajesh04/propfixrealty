@@ -2,6 +2,7 @@ import "../styles/Hero.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import backgroundImage from "../assets/background_wepg.webp"; // ✅ Import image
 
 export default function Hero() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,10 +34,16 @@ export default function Hero() {
           name="keywords"
           content="plots in Chennai, buy plots Chennai, villas Chennai, apartments Chennai, Propfix Realty"
         />
-        <link rel="preload" as="image" href="/assets/test.webp" />
+        {/* ✅ preload imported background */}
+        <link rel="preload" as="image" href={backgroundImage} />
       </Helmet>
 
-      <section className="hero-section d-flex justify-content-center align-items-center text-white text-center">
+      <section
+        className="hero-section d-flex justify-content-center align-items-center text-white text-center"
+        style={{
+          background: `url(${backgroundImage}) center center / cover no-repeat`,
+        }} // ✅ Apply background inline
+      >
         <div className="container">
           <h1 className="gradient-text heading-custom fw-bold mb-4">
             First Step to Your Dream Home
