@@ -99,6 +99,7 @@ const CounterSection: React.FC = () => {
                                     margin: '0 auto',
                                 }}
                                 src={item.icon}
+                                alt={item.label}
                             />
                                 
                             <div className="counter-value fs-3 fw-bold">

@@ -44,6 +44,7 @@ function AppContent() {
           <Route path="/projects-in/:city" element={<FindByCityDataWrapper />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/contact-us" element={<Contact />}/>
 
           {/* Admin Routes */}
           <Route path="/admin" element={<Login />} />
