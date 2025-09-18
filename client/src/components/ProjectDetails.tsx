@@ -129,7 +129,7 @@ export default function ProjectDetails() {
                 <Carousel.Item key={idx}>
                   <img
                     className="d-block w-100 project-carousel-img rounded"
-                    src={`https://propfixrealty-server.vercel.app${imgUrl}`}
+                    src={`http://13.201.38.254${imgUrl}`}
                     alt={`Slide ${idx + 1}`}
                   />
                 </Carousel.Item>

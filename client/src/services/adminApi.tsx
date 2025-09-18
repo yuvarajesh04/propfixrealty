@@ -5,7 +5,7 @@ interface LoginData {
   password: string;
 }
 
-const BASE_URL = "https://propfixrealty-server.vercel.app/api";
+const BASE_URL = "http://13.201.38.254/api";
 
 const AdminApi = {
   adminLogin: async (data: LoginData) => {
