@@ -12,7 +12,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173','http://13.201.38.254' ,'https://propfixrealty.com', 'https://www.propfixrealty.com']
+  origin: ['https://propfixrealty.com', 'https://www.propfixrealty.com']
 }));
 
 app.use(bodyParser.json());

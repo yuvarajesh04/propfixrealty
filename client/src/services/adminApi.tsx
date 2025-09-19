@@ -5,7 +5,7 @@ interface LoginData {
   password: string;
 }
 
-const BASE_URL = "http://13.201.38.254/api";
+const BASE_URL = "https://propfixrealty.com/api";
 
 const AdminApi = {
   adminLogin: async (data: LoginData) => {
