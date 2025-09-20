@@ -124,14 +124,12 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
               </p>
             )
           }
-
-
           <div className="plot-type-and-price">
             <div className="plot-type">
               <div className="icon">
                 <img src={bed} alt="bedroom configuration" />
               </div>
-              <span>{project.size} Sqft</span>
+              <span>{project.size}</span>
             </div>
             <p className="price-detail">
               <i className="bi bi-currency-rupee"></i>

@@ -2,7 +2,7 @@ import "../styles/Hero.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import backgroundImage from "../assets/background_wepg.webp"; // ✅ Import image
+import backgroundImage from "../assets/test.jpg"; // ✅ Import image
 
 export default function Hero() {
   const [searchQuery, setSearchQuery] = useState("");

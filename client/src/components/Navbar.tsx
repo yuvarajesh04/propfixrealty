@@ -111,13 +111,13 @@ const Navbar: React.FC = () => {
                                     style={{ color: "var(--primary-blue)" }}
                                 ></i>
                                 <a
-                                    href="tel:+919789360885"
+                                    href="tel:+91 9789360885"
                                     style={{
                                         color: "var(--text-dark)",
                                         textDecoration: "none",
                                     }}
                                 >
-                                    +91 8789360885
+                                    +91 9789360885
                                 </a>
                             </p>
                         </div>

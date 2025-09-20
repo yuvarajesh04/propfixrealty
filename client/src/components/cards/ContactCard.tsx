@@ -125,7 +125,7 @@ export default function ContactCard({title, location, onClose}: ContactCardProps
                                 type="tel" 
                                 id="mobile" 
                                 name="mobile" 
-                                placeholder="9876543210" 
+                                placeholder="9789360885" 
                             />
                         </div>
                         <div className="form-group">
