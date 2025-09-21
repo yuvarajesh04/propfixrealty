@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
         { path: "/about", label: "About" },
         { path: "/projects", label: "Projects" },
         { path: "/contact", label: "Contact" },
-        ...(admin ? [{ path: "admin/add-project", label: "Add Project" }] : [])
+        ...(admin ? [{ path: "admin/dashboard", label: "Admin" }] : [])
     ];
 
 

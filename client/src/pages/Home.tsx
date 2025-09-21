@@ -44,7 +44,7 @@ export default function Home() {
         <div className="home-page">
             {/* SEO Meta Tags */}
             <Helmet>
-                <title>PropFix Realty | Best Real Estate Properties in Chennai & Madurai</title>
+                <title>PropFix Realty | Best Real Estate Properties in Chennai</title>
                 <meta name="description" content="PropFix Realty offers premium residential and commercial properties in Chennai, Madurai, and nearby areas. Explore top real estate projects and connect with trusted developers." />
                 <meta name="keywords" content="real estate Chennai, properties in Chennai, plots in Madurai, real estate Madurai, residential projects, commercial projects" />
                 

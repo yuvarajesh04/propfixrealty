@@ -316,6 +316,14 @@ const AddNewProject: React.FC = () => {
                     <option value="hospital">Hospital</option>
                     <option value="mall">Mall</option>
                     <option value="metro">Metro</option>
+                    <option value="airport">Airport</option>
+                    <option value="industrial">Industrial</option>
+                    <option value="itpark">ITPark</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="amusement">Amusement</option>
+                    <option value="area">Area</option>
+                    <option value="road">Road</option>
+                    <option value="railway">Railway Station</option>
                   </select>
                 </div>
 

@@ -1,17 +1,13 @@
 .project-carousel-container {
-  max-width: 100%;   
-  margin: auto;      
+  max-width: 100%;
+  margin: auto;
 }
 
 .project-carousel-img {
-  width: 100%;     
-  height: 500px;     
-  object-fit: cover; 
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
   border-radius: 10px;
-}
-
-.common-color {
-  color: grey;
 }
 
 .gradient-text {
@@ -31,13 +27,23 @@
   transform: translateY(-2px);
 }
 
+/* ✅ FAQ Styling */
+.faq-section .accordion-button {
+  font-weight: 500;
+  font-size: 1rem;
+}
+.faq-section .accordion-body {
+  font-size: 0.95rem;
+  color: #555;
+}
 
+/* ✅ Responsive */
 @media (max-width: 768px) {
-  .project-carousel-container {
-    max-width: 100%;
+  .project-carousel-img {
+    height: 220px;
   }
 
-  .project-carousel-img {
-    height: 200px;
+  .fs-3 {
+    font-size: 1.4rem !important;
   }
 }

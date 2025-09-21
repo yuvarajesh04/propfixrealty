@@ -5,6 +5,7 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const projectRoutes = require('./routes/projectRoutes');
+const locationRoutes = require('./routes/locationRoutes')
 const path = require('path');
 
 // Create an instance of Express
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use('/api/auth', userRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/projects', projectRoutes);
+app.use('/api/location', locationRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 function startServer() {
