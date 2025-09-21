@@ -2,10 +2,27 @@ import axios from "axios"
 
 const BASE_URL = 'https://propfixrealty.com/api/location'
 
+interface Payload {
+    location: string,
+    des: string,
+    price: string,
+    createdBy: string
+}
+
 const locationApi = {
-    addLocation: async (formData: FormData) => {
+    addLocation: async (formData: Payload) => {
         try {
-            const res = await axios.post(`${BASE_URL}/new`, formData, {
+
+            const bodyData = {
+                location: formData.location,
+                price: formData.price,
+                des: formData.des,
+                createdBy: formData.createdBy
+            }
+
+            alert(JSON.stringify(bodyData))
+            
+            const res = await axios.post(`${BASE_URL}/new`, bodyData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }

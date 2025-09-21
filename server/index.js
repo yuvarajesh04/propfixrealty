@@ -13,10 +13,14 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['https://propfixrealty.com', 'https://www.propfixrealty.com']
+  origin: ['https://propfixrealty.com', 'https://www.propfixrealty.com', '*']
 }));
 
 app.use(bodyParser.json());
+
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/auth', userRoutes);

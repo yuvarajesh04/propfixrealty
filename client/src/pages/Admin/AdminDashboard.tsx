@@ -61,12 +61,13 @@ const AdminDashboard: React.FC = () => {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("location", locationData.location);
-    formData.append("price", locationData.price);
-    formData.append("des", locationData.des + " " + locationData.location);
+    const formData = {
+      location: locationData.location,
+      price: locationData.price,
+      des: locationData.des + " " + locationData.location,
+      createdBy: `${localStorage.getItem('name')}`
+    }
 
-    console.log("Form submitted:", Object.fromEntries(formData));
     const res = await locationApi.addLocation(formData);
     setMessage(res.message)
     if (res.success) {

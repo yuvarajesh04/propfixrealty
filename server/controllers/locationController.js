@@ -6,10 +6,11 @@ const locationController = {
             const {
                 location,
                 price,
-                des
+                des,
+                createdBy
             } = req.body;
 
-            if (!location || !price || !des) {
+            if (!location || !price || !des || !createdBy) {
                 res.status(400).json({
                     success: false,
                     message: 'Give all required fields'
@@ -28,7 +29,7 @@ const locationController = {
                 location,
                 price,
                 des,
-                createdBy: req.name
+                createdBy
             })
 
             await newproj.save()
