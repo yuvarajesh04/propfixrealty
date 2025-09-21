@@ -32,6 +32,17 @@ const locationApi = {
         } catch (error) {
             console.log("Add location error:", error)
         }
+    },
+
+    // get locations
+    getLocations: async () => {
+        try {
+            const res = await axios.get(`${BASE_URL}/get-locations`);
+
+            return res.data
+        } catch (error) {
+            console.log('Get location error:', error)
+        }
     }
 }
 

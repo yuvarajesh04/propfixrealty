@@ -47,6 +47,17 @@ const locationController = {
                 error: error.message
             })
         }
+    },
+
+    // Get locations
+    getLocations: async (req, res) => {
+        const locations = await Location.find();
+
+        res.status(200).json({
+            success: true,
+            message: 'Location retrive sucess!',
+            locations
+        })
     }
 }
 

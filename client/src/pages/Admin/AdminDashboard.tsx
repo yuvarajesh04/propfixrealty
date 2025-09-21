@@ -69,7 +69,13 @@ const AdminDashboard: React.FC = () => {
     }
 
     const res = await locationApi.addLocation(formData);
+
     setMessage(res.message)
+
+    setInterval(() => {
+      setMessage('')
+    }, 5000)
+    
     if (res.success) {
       setLocationData({
         location: '',

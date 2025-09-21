@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import FindByCityCard from "./cards/FindByCityCard";
 import "../styles/Projects.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import projectApi from "../services/projectApi";
+import locationApi from "../services/locationApi";
 
 interface CityData {
   city: string;
@@ -22,48 +22,14 @@ export default function FindByCity() {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      try {
-        const projects = await projectApi.getProjects();
+      setLoading(true)
 
-        if (projects && projects.length > 0) {
-          // 🔹 Group projects by location and get price range
-          const cityMap: Record<string, { min: number; max: number; description: string }> = {};
+      const res = await locationApi.getLocations();
 
-          projects.forEach((p: any) => {
-            const city = p.location || "Unknown";
-            const price = Number(p.price) || 0;
+      setCities(res.projects)
 
-            if (!cityMap[city]) {
-              cityMap[city] = {
-                min: price,
-                max: price,
-                description: `Explore real estate projects in ${city}.`,
-              };
-            } else {
-              cityMap[city].min = Math.min(cityMap[city].min, price);
-              cityMap[city].max = Math.max(cityMap[city].max, price);
-            }
-          });
-
-          const formattedCities: CityData[] = Object.entries(cityMap).map(
-            ([city, data]) => ({
-              city,
-              description: data.description,
-              price:
-                data.min === data.max
-                  ? `₹${data.min.toLocaleString()}`
-                  : `₹${data.min.toLocaleString()} - ₹${data.max.toLocaleString()}`,
-            })
-          );
-
-          setCities(formattedCities);
-        }
-      } catch (err) {
-        console.error("Error fetching projects:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
+      setLoading(false)
+    }
 
     fetchProjects();
   }, []);
@@ -156,12 +122,12 @@ export default function FindByCity() {
               }}
               aria-label="Show all property locations in Chennai"
               onMouseEnter={(e) =>
-                (e.currentTarget.style.background =
-                  "linear-gradient(135deg, #08aef5, #4f79ac)")
+              (e.currentTarget.style.background =
+                "linear-gradient(135deg, #08aef5, #4f79ac)")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.background =
-                  "linear-gradient(135deg, #4f79ac, #08aef5)")
+              (e.currentTarget.style.background =
+                "linear-gradient(135deg, #4f79ac, #08aef5)")
               }
             >
               Show all
