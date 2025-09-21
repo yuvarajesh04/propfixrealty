@@ -7,8 +7,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import locationApi from "../services/locationApi";
 
 interface CityData {
-  city: string;
-  description: string;
+  location: string,
+  des: string,
   price: string;
 }
 
@@ -26,7 +26,7 @@ export default function FindByCity() {
 
       const res = await locationApi.getLocations();
 
-      setCities(res.projects)
+      setCities(res.locations)
 
       setLoading(false)
     }
@@ -92,8 +92,8 @@ export default function FindByCity() {
               "itemListElement": cities.map((city, index) => ({
                 "@type": "ListItem",
                 "position": index + 1,
-                "name": city.city,
-                "description": city.description,
+                "name": city.location,
+                "description": city.des,
               })),
             })}
           </script>
@@ -145,8 +145,8 @@ export default function FindByCity() {
             {cities.map((city, index) => (
               <Col key={index} lg={4} md={6} sm={12} className="mb-4">
                 <FindByCityCard
-                  city={city.city}
-                  description={city.description}
+                  city={city.location}
+                  description={city.des}
                   price={city.price}
                 />
               </Col>
