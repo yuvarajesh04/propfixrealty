@@ -9,17 +9,16 @@ const AllProjectsPage: React.FC = () => {
   const navigate = useNavigate();
 
   const [allProjects, setAllProjects] = useState<any[]>([]);
-  const [projects, setProjects] = useState<any[]>([]);
+  const [filteredProjects, setFilteredProjects] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Fetch all projects on mount
+  // Fetch all projects once
   useEffect(() => {
     window.scroll(0, 0);
     const getProjects = async () => {
       try {
         const res = await projectApi.getProjects();
         setAllProjects(res || []);
-        setProjects(res || []);
       } catch (err) {
         console.error("Error fetching projects:", err);
       }
@@ -27,45 +26,44 @@ const AllProjectsPage: React.FC = () => {
     getProjects();
   }, []);
 
-  // Apply filters when searchParams or allProjects changes
+  // Sync searchTerm with searchParams on mount / URL change
   useEffect(() => {
-    const category = searchParams.get("category")?.toLowerCase();
-    const searchQuery = searchParams.get("search")?.toLowerCase() || "";
+    const category = searchParams.get("type")?.toLowerCase() || "";
+    const search = searchParams.get("search") || "";
+    setSearchTerm(search);
 
-    let filteredProjects = [...allProjects];
+    let projects = [...allProjects];
 
     if (category) {
-      filteredProjects = filteredProjects.filter(
-        (p) => p.type?.toLowerCase() === category
-      );
+      projects = projects.filter((p) => p.type?.toLowerCase() === category);
     }
 
-    if (searchQuery) {
-      setSearchTerm(searchQuery);
-      filteredProjects = filteredProjects.filter(
+    if (search) {
+      const searchLower = search.toLowerCase();
+      projects = projects.filter(
         (p) =>
-          p.title?.toLowerCase().includes(searchQuery) ||
-          p.location?.toLowerCase().includes(searchQuery) ||
-          p.type?.toLowerCase().includes(searchQuery) ||
-          p.des?.toLowerCase().includes(searchQuery)
+          p.title?.toLowerCase().includes(searchLower) ||
+          p.location?.toLowerCase().includes(searchLower) ||
+          p.type?.toLowerCase().includes(searchLower) ||
+          p.des?.toLowerCase().includes(searchLower)
       );
     }
 
-    setProjects(filteredProjects);
+    setFilteredProjects(projects);
   }, [searchParams, allProjects]);
 
+  // Handle input change and update URL
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const term = e.target.value.toLowerCase();
+    const term = e.target.value;
     setSearchTerm(term);
 
-    const newSearchParams = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams);
     if (term) {
-      newSearchParams.set("search", term);
+      params.set("search", term);
     } else {
-      newSearchParams.delete("search");
+      params.delete("search");
     }
-
-    navigate(`?${newSearchParams.toString()}`, { replace: true });
+    navigate(`?${params.toString()}`, { replace: true });
   };
 
   return (
@@ -76,6 +74,7 @@ const AllProjectsPage: React.FC = () => {
       </Helmet>
 
       <div className="container">
+        {/* Search Input */}
         <div className="row mb-4">
           <div className="col-12 col-md-6 mx-auto">
             <input
@@ -88,9 +87,10 @@ const AllProjectsPage: React.FC = () => {
           </div>
         </div>
 
+        {/* Projects Grid */}
         <div className="row g-4 justify-content-center">
-          {projects.length > 0 ? (
-            projects.map((project, index) => (
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, index) => (
               <div
                 key={index}
                 className="col-sm-12 col-md-6 col-lg-4 d-flex align-items-stretch"

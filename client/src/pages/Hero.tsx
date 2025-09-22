@@ -12,13 +12,13 @@ export default function Hero() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/all-projects?search=${encodeURIComponent(searchQuery)}`);
+      navigate(`/show-all-projects?search=${encodeURIComponent(searchQuery)}`);
     }
   };
 
   // Handle category button click
   const handleCategoryClick = (category: string) => {
-    navigate(`/all-projects?category=${category.toLowerCase()}`);
+    navigate(`/show-all-projects?search=${category.toLowerCase()}`);
   };
 
   return (

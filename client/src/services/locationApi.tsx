@@ -27,8 +27,6 @@ const locationApi = {
                 des: formData.des,
                 createdBy: formData.createdBy
             }
-
-            alert(JSON.stringify(bodyData))
             
             const res = await axios.post(`${BASE_URL}/new`, bodyData, {
                 headers: {
