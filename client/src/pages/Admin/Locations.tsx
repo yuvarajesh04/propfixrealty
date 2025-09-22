@@ -11,7 +11,7 @@ interface LocationType {
 
 const Location: React.FC = () => {
     const [locations, setLocations] = React.useState<LocationType[]>([]);
-    const [addLocation, setAddLocation] = React.useState<boolean>(true);
+    const [addLocation, setAddLocation] = React.useState<boolean>(false);
     const [editLocation, setEditLocation] = React.useState<LocationType>({
         location: '',
         price: '',
@@ -31,7 +31,7 @@ const Location: React.FC = () => {
             }
         }
         handleViewLocations();
-    }, []);
+    }, [locations]);
 
     async function handleDelete(id: string) {
         if (!id) {
@@ -68,8 +68,8 @@ const Location: React.FC = () => {
         try {
             const res = await locationApi.editLocation(editLocation);
             if (res.success) {
-                setMessage("Location added successfully");
-                setLocations((prev) => [...prev, res.location]);
+                alert("Location added successfully");
+                setLocations(res.locations);
                 setAddLocation(false);
             }
         } catch (error) {

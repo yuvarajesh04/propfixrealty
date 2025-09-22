@@ -92,10 +92,12 @@ const locationController = {
                     message: 'Something went wrong! please try again later'
                 })
 
+            const locations = await Location.find({}).sort({ _id: -1 });
+
             res.status(200).json({
                 success: true,
                 message: 'Locaiton edited success!!',
-                edit
+                locations
             })
 
         } catch (error) {
