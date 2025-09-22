@@ -4,8 +4,8 @@ import { useState, useCallback, useEffect, type KeyboardEvent } from "react";
 interface LocationCardProp {
     location: string;
     index: number;
-    projectCount?: number; // Optional prop for showing project count
-    isPopular?: boolean;   // Optional prop for popular locations
+    projectCount?: number;
+    isPopular?: boolean;
 }
 
 export default function LocationCard({ 

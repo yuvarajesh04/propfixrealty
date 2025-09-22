@@ -9,6 +9,14 @@ interface Payload {
     createdBy: string
 }
 
+interface LocationType {
+    location: string,
+    price: string,
+    des: string,
+    createdBy: string,
+    _id?: string
+}
+
 const locationApi = {
     addLocation: async (formData: Payload) => {
         try {
@@ -42,6 +50,36 @@ const locationApi = {
             return res.data
         } catch (error) {
             console.log('Get location error:', error)
+        }
+    },
+
+    // delete location
+    deleteLocation: async (id: string) => {
+        try {
+            const res = await axios.delete(`${BASE_URL}/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+
+            return res.data
+        } catch (error) {
+            console.log('Delete error location:', error);
+        }
+    },
+
+    // Edit location
+    editLocation: async (locationData: LocationType) => {
+        try {
+            const res = await axios.put(`${BASE_URL}/${locationData._id}`, locationData,  {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+
+            return res.data
+        } catch (error) {
+            console.error('Edit location error:', error);
         }
     }
 }

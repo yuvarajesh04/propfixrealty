@@ -45,6 +45,10 @@ const AdminDashboard: React.FC = () => {
     }));
   }
 
+  function handleViewLocations () {
+    navigate('/admin/view-projects')
+  }
+
   React.useEffect(() => {
     window.scroll(0, 0);
     const getUsers = async () => {
@@ -218,13 +222,22 @@ const AdminDashboard: React.FC = () => {
       {/* Open Modal Button */}
       <div className="add-location-div">
         <button
-          className="border-0 p-3 rounded text-white fw-semibold"
+          className="border-0 p-3 rounded text-white fw-semibold mx-2"
           onClick={handleAddLocation}
           style={{
             background: "linear-gradient(135deg, #4f79ac, #08aef5)",
           }}
         >
           Add Location
+        </button>
+        <button
+          className="border-0 p-3 rounded text-white fw-semibold"
+          onClick={handleViewLocations}
+          style={{
+            background: "linear-gradient(135deg, #4f79ac, #08aef5)",
+          }}
+        >
+          View locations
         </button>
       </div>
 

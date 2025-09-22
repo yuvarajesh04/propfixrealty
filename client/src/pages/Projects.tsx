@@ -123,11 +123,16 @@ export default function Projects() {
             <h1 className="fs-2">Current Projects</h1>
 
             {/* Filter buttons */}
-            <div className="project-btns">
+            <div className="project-btns d-flex flex-wrap justify-content-center justify-content-lg-end gap-2">
               {types.map((type, index) => (
                 <button
                   key={index}
-                  className={`py-2 px-4 mx-3 my-1 rounded-pill fw-semibold`}
+                  className={`
+                    px-3 px-sm-3 px-md-4 px-lg-4 
+                    py-2 py-sm-2 py-md-2 py-lg-2
+                    mx-1 my-2 
+                    rounded-pill fw-semibold
+                  `}
                   onClick={() => handleFilterProjects(type.name)}
                   style={{
                     background:
@@ -163,16 +168,14 @@ export default function Projects() {
             {/* Project Cards Container */}
             <div className="project-cards-container">
               <div
-                className={`row project-cards-row ${
-                  isTransitioning ? "transitioning" : ""
-                }`}
+                className={`row project-cards-row ${isTransitioning ? "transitioning" : ""
+                  }`}
               >
                 {projectsToShow.length > 0 ? (
                   projectsToShow.map((project, index) => (
                     <div
-                      className={`col-12 ${
-                        projectsPerPage === 3 ? "col-lg-4" : ""
-                      } project-card-col`}
+                      className={`col-12 ${projectsPerPage === 3 ? "col-lg-4" : ""
+                        } project-card-col`}
                       key={`${startIndex}-${index}`}
                     >
                       <ProjectCard project={project} />

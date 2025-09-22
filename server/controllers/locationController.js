@@ -58,6 +58,86 @@ const locationController = {
             message: 'Location retrive sucess!',
             locations
         })
+    },
+
+    // Edit location
+    editLocation: async (req, res) => {
+        try {
+            const { id } = req.params;
+
+            if (!id)
+                res.status(400).json({
+                    success: false,
+                    message: "Id not found!"
+                })
+
+            const {location, price}= req.body;
+
+            if (!location || !price)
+                res.status(400).json({
+                    success: false,
+                    message: 'Could not find location and price'
+                })
+
+            const editData = {
+                location,
+                price
+            }
+
+            const edit = await Location.findByIdAndUpdate(id, editData)
+
+            if (!edit)
+                res.status(400).json({
+                    success: false,
+                    message: 'Something went wrong! please try again later'
+                })
+
+            res.status(200).json({
+                success: true,
+                message: 'Locaiton edited success!!',
+                edit
+            })
+
+        } catch (error) {
+            console.error('Edit error:', error.message)
+            res.status(500).json({
+                success: false,
+                message: "Internal server error",
+                error: error.message
+            })
+        }
+    },
+
+    deleteLocation: async (req, res)=>{
+        try {
+            const id = req.params;
+
+            if (!id)
+                res.status(400).json({
+                    success: false,
+                    message: 'Id not found'
+                })
+
+            const deleteLocation = await Location.findByIdAndDelete(id);
+
+            if(!deleteLocation)
+                res.status(500).json({
+                    success: false,
+                    message: 'Invalid Id',
+                })
+
+            res.status({
+                success: true,
+                message: 'Location deleted success!'
+            })
+        } catch (error) {
+            console.error('Location delete error:', error.message)
+            res.status(500).json({
+                success: false,
+                message: 'Internal server error',
+                error: error.message
+            })
+        }
     }
 }
 

@@ -17,6 +17,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import AddNewProject from "./pages/Admin/AddNewProject";
+import Location from "./pages/Admin/Locations";
 
 function AppContent() {
   const location = useLocation();
@@ -51,6 +52,9 @@ function AppContent() {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/admin/add-project" element={<AddNewProject />} />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/admin/view-projects" element={<Location />} />
           </Route>
 
           {/* 404 Page */}

@@ -1,20 +1,37 @@
 import { Container, Row, Col, Form } from 'react-bootstrap';
-import { locationData } from '../data/ProjectData';
 import LocationCard from '../components/cards/LocationCard';
 import React from 'react';
 import { Helmet } from "react-helmet-async";
+import locationApi from '../services/locationApi';
+
+interface CityData {
+  location: string,
+  des: string,
+  price: string;
+}
 
 export default function ShowAllLocation() {
-    const [locations, setLocations] = React.useState(locationData);
+    const [locations, setLocations] = React.useState<CityData[]>([]);
+    const [allLocations, setAllLocations] = React.useState<CityData[]>([]); 
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
+        const fetchLocations = async () => {
+            const res = await locationApi.getLocations();
+            setLocations(res.locations);
+            setAllLocations(res.locations);
+        }
+        fetchLocations();
     }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
-        const filtered = locationData.filter((l) =>
-            l.toLowerCase().includes(value.toLowerCase())
+        if (!value.trim()) {
+            setLocations(allLocations);
+            return;
+        }
+        const filtered = allLocations.filter((l) =>
+            l.location.toLowerCase().includes(value.toLowerCase())
         );
         setLocations(filtered);
     };
@@ -28,18 +45,6 @@ export default function ShowAllLocation() {
                     name="description"
                     content="Explore all available property locations with Propfix Realty. Find plots, villas, and apartments in the best areas across Chennai."
                 />
-                <meta
-                    name="keywords"
-                    content="real estate locations Chennai, property areas Chennai, Propfix Realty projects, plots villas apartments Chennai"
-                />
-                <meta property="og:title" content="Explore All Locations | Propfix Realty" />
-                <meta
-                    property="og:description"
-                    content="Discover property locations in Chennai with Propfix Realty. Choose from plots, villas, and apartments across prime areas."
-                />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://propfixrealty.com/locations" />
-                <meta property="og:image" content="https://propfixrealty.com/logo.jpg" />
             </Helmet>
 
             <Row className="mt-5 flex-column flex-lg-row justify-content-around align-items-center">
@@ -61,7 +66,7 @@ export default function ShowAllLocation() {
                 {locations.length > 0 ? (
                     locations.map((data, index) => (
                         <Col key={index} lg={3} sm={6} md={4}>
-                            <LocationCard index={index} location={data} />
+                            <LocationCard index={index} location={data.location} />
                         </Col>
                     ))
                 ) : (
