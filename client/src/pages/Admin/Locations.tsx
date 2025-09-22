@@ -21,34 +21,35 @@ const Location: React.FC = () => {
     })
     const [message, setMessage] = React.useState("");
 
-    React.useEffect(() => {
-        async function handleViewLocations() {
-            try {
-                const res = await locationApi.getLocations();
-                setLocations(res.locations)
-            } catch (error) {
-                console.log('View locations error:', error)
-            }
+    const fetchLocations = async () => {
+        try {
+            const res = await locationApi.getLocations();
+            setLocations(res.locations)
+        } catch (error) {
+            console.log('View locations error:', error)
         }
-        handleViewLocations();
-    }, [locations]);
+    }
 
-    async function handleDelete(id: string) {
+    React.useEffect(() => {
+        fetchLocations();
+    }, []);
+
+    const handleDelete = async (id: string) => {
         if (!id) {
             alert("Id not found");
             return;
         }
         const res = await locationApi.deleteLocation(id);
         if (res.success) {
-            alert("Deleted success");
-            setLocations((prev) => prev.filter((l) => l._id !== id));
+            alert("Deleted successfully");
+            fetchLocations();
         }
     }
 
-    async function handleEdit(editId: string) {
+    const handleEdit = (editId: string) => {
         const data = locations.find((loc) => loc._id === editId);
         if (!data) return;
-        setAddLocation(true)
+        setAddLocation(true);
         setEditLocation({
             location: data.location,
             price: data.price,
@@ -58,22 +59,22 @@ const Location: React.FC = () => {
         });
     }
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setEditLocation((prev) => ({ ...prev, [name]: value }));
     }
 
-    async function handleSubmit(e: React.FormEvent) {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             const res = await locationApi.editLocation(editLocation);
             if (res.success) {
-                alert("Location added successfully");
-                setLocations(res.locations);
+                alert("Location updated successfully");
+                fetchLocations();
                 setAddLocation(false);
             }
         } catch (error) {
-            setMessage("Error adding location");
+            setMessage("Error updating location");
         }
     }
 
@@ -159,7 +160,7 @@ const Location: React.FC = () => {
                         }}
                     >
                         <form onSubmit={handleSubmit}>
-                            <h4 className="mb-3">Add Location</h4>
+                            <h4 className="mb-3">Edit Location</h4>
                             <div className="form-group mb-3">
                                 <label htmlFor="location" className="form-label">
                                     Location
@@ -188,9 +189,7 @@ const Location: React.FC = () => {
                                     className="form-input form-control"
                                 />
                             </div>
-                            {message && (
-                                <p>{message}</p>
-                            )}
+                            {message && <p>{message}</p>}
                             <button
                                 type="submit"
                                 className="p-2 rounded border-0 text-white fw-semibold"

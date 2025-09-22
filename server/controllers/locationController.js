@@ -71,7 +71,7 @@ const locationController = {
                     message: "Id not found!"
                 })
 
-            const {location, price}= req.body;
+            const { location, price } = req.body;
 
             if (!location || !price)
                 res.status(400).json({
@@ -110,9 +110,9 @@ const locationController = {
         }
     },
 
-    deleteLocation: async (req, res)=>{
+    deleteLocation: async (req, res) => {
         try {
-            const id = req.params;
+            const { id } = req.params;
 
             if (!id)
                 res.status(400).json({
@@ -122,7 +122,7 @@ const locationController = {
 
             const deleteLocation = await Location.findByIdAndDelete(id);
 
-            if(!deleteLocation)
+            if (!deleteLocation)
                 res.status(500).json({
                     success: false,
                     message: 'Invalid Id',
