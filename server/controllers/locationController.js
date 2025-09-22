@@ -128,7 +128,7 @@ const locationController = {
                     message: 'Invalid Id',
                 })
 
-            res.status({
+            res.status(200).json({
                 success: true,
                 message: 'Location deleted success!'
             })
