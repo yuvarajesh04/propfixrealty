@@ -39,10 +39,15 @@ const Location: React.FC = () => {
             alert("Id not found");
             return;
         }
-        const res = await locationApi.deleteLocation(id);
-        if (res.success) {
-            alert("Deleted successfully");
-            fetchLocations();
+
+        const confirm = window.confirm('Are you sure want to delete ?')
+
+        if (confirm) {
+            const res = await locationApi.deleteLocation(id);
+            if (res.success) {
+                alert("Deleted successfully");
+                fetchLocations();
+            }
         }
     }
 
