@@ -6,17 +6,17 @@ body {
     overflow-y: hidden;
     font-style: normal;
     background-color: white;
-    margin-top: 70px; /* Add space for fixed navbar */
+    margin-top: 70px;
 }
 
 body {
-  overflow: auto;               /* Enable scrolling */
-  scrollbar-width: none;        /* Firefox */
-  -ms-overflow-style: none;     /* Internet Explorer 10+ */
+  overflow: auto;               
+  scrollbar-width: none;        
+  -ms-overflow-style: none;     
 }
 
 body::-webkit-scrollbar {
-  display: none;                /* Chrome, Safari, Edge */
+  display: none;              
 }
 
 
@@ -129,6 +129,10 @@ body::-webkit-scrollbar {
 
 .company-address:hover {
   color: #25aae1;
+}
+
+a, Link {
+  text-decoration: none;
 }
 
 /* Responsive tweaks */

@@ -56,7 +56,7 @@ export default function Home() {
                         "@type": "RealEstateAgent",
                         "name": "PropFix Realty",
                         "url": "https://propfixrealty.com",
-                        "logo": "https://propfixrealty.com/assets/your-logo.png",
+                        "logo": "https://propfixrealty.com/propfixrealtyicon.jpg",
                         "sameAs": [
                             "https://www.facebook.com/propfixrealty",
                             "https://www.instagram.com/propfixrealty"
