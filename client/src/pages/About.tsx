@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import about_img from "../assets/about_img1.jpg";
-import propfixrealty from "../assets/profixrealtyicon.jpg"
+import propfixrealty from "../assets/profixrealtyicon.png"
 
 const About = () => {
   return (

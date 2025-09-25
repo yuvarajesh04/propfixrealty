@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../styles/Footer.css'
 
-import propfixRealtyIcon from '../assets/profixrealtyicon.jpg';
+import propfixRealtyIcon from '../assets/profixrealtyicon.png';
 import home from '../assets/footer/home.jpg';
 import contact from '../assets/footer/location.jpg';
 import trust from '../assets/footer/trust.jpg';

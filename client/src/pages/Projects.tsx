@@ -5,7 +5,7 @@ import next from "../assets/stuff/right.jpg";
 import { useNavigate } from "react-router-dom";
 import "../styles/Projects.css";
 import projectApi from "../services/projectApi";
-import propfixrealty from "../assets/profixrealtyicon.jpg";
+import propfixrealty from "../assets/profixrealtyicon.png";
 
 export default function Projects() {
   const [startIndex, setStartIndex] = useState(0);
