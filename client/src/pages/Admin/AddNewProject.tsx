@@ -324,6 +324,7 @@ const AddNewProject: React.FC = () => {
                     <option value="area">Area</option>
                     <option value="road">Road</option>
                     <option value="railway">Railway Station</option>
+                    <option value="bus">Bus Stop</option>
                   </select>
                 </div>
 
