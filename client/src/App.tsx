@@ -18,6 +18,7 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import AddNewProject from "./pages/Admin/AddNewProject";
 import Location from "./pages/Admin/Locations";
+import EditProject from "./pages/Admin/EditProject";
 
 function AppContent() {
   const location = useLocation();
@@ -55,6 +56,9 @@ function AppContent() {
           </Route>
           <Route element={<ProtectedRoute />}>
             <Route path="/admin/view-projects" element={<Location />} />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/admin/edit-project/:id" element={<EditProject />} />
           </Route>
 
           {/* 404 Page */}

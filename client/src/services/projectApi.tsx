@@ -36,7 +36,6 @@ const projectApi = {
       console.log('Get all projects:', error)
     }
   },
-
   // delete project by id
   deleteProject: async (id: string) => {
     try {
@@ -50,7 +49,42 @@ const projectApi = {
     } catch (error) {
       console.log('Project delete error:', error)
     }
+  },
+  // Get single project
+  getSingleProject: async (id: string) => {
+    try {
+      const res = await axios.get(`${BASE_URL}/projects/get-project/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+
+      return res.data
+    } catch (error) {
+      console.error('Get single project error', error)
+    }
+  },
+
+  // Update project
+updateProject: async (id: string, formData: FormData) => {
+  try {
+    const res = await axios.put(
+      `${BASE_URL}/projects/update/${id}`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    console.error("Update project error:", error);
+    throw error;
   }
+},
+
 };
 
 export default projectApi;
