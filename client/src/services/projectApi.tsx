@@ -66,24 +66,24 @@ const projectApi = {
   },
 
   // Update project
-updateProject: async (id: string, formData: FormData) => {
-  try {
-    const res = await axios.put(
-      `${BASE_URL}/projects/update/${id}`,
-      formData,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-    return res.data;
-  } catch (error) {
-    console.error("Update project error:", error);
-    throw error;
-  }
-},
+  updateProject: async (id: string, formData: FormData) => {
+    try {
+      const res = await axios.put(
+        `${BASE_URL}/projects/update/${id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return res.data;
+    } catch (error) {
+      console.error("Update project error:", error);
+      throw error;
+    }
+  },
 
 };
 
