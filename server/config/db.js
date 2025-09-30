@@ -1,29 +1,17 @@
-// const mongoose = require('mongoose');
-// require('dotenv').config();
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-// async function connectDB() {
-//     try {
-//         await mongoose.connect('mongodb://localhost:27017/propfixrealty')
-//             .then(()=> console.log('Mongoo db connected with propfixrealty database'))
-//     } catch (error) {
-//         console.log("Mongo DB connection error:", error.message)
-//     }
-// }
-
-// module.exports = connectDB
-
-const mongoose = require('mongoose');
-require('dotenv').config();
+dotenv.config();
 
 async function connectDB() {
   try {
     await mongoose.connect(
-      'mongodb://localhost:27017/propfixrealty'
+      process.env.MONGO_URI || "mongodb://localhost:27017/propfixrealty"
     );
-    console.log('✅ MongoDB connected with localdb');
+    console.log("✅ MongoDB connected with localdb");
   } catch (error) {
-    console.log('Mongo DB connection error:', error.message);
+    console.log("Mongo DB connection error:", error.message);
   }
 }
 
-module.exports = connectDB;
+export default connectDB;

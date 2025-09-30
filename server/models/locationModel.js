@@ -1,22 +1,25 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const locationModel = new mongoose.Schema({
+const locationSchema = new mongoose.Schema(
+  {
     location: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     price: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     des: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     createdBy: {
-        type: String,
-        required: true
-    }
-}, {timestamps: true})
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model('Location', locationModel);
+export default mongoose.model("Location", locationSchema);

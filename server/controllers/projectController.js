@@ -1,5 +1,5 @@
-const Project = require("../models/projectModel");
-const connectDB = require("../config/db");
+import Project from "../models/projectModel.js";
+import connectDB from "../config/db.js";
 
 // Cached DB connection for serverless
 let isConnected = false;
@@ -93,7 +93,6 @@ const projectController = {
     }
   },
 
-  // GET SINGLE
   getSingleProject: async (req, res) => {
     try {
       await connectOnce();
@@ -111,7 +110,6 @@ const projectController = {
     }
   },
 
-  // UPDATE
   updateProject: async (req, res) => {
     try {
       await connectOnce();
@@ -139,8 +137,7 @@ const projectController = {
         parsedExistingImages = [];
       }
 
-      // new uploaded images
-      const newImages = req.files ? req.files.map((file) => `/uploads/${file.filename}`) : [];
+      const newImages = req.files ? req.files.map(file => `/uploads/${file.filename}`) : [];
 
       const project = await Project.findById(id);
       if (!project) {
@@ -171,7 +168,7 @@ const projectController = {
 
   deleteProject: async (req, res) => {
     try {
-      await connectOnce(); // ensure DB connected
+      await connectOnce();
 
       const { id } = req.params;
 
@@ -190,4 +187,4 @@ const projectController = {
   }
 };
 
-module.exports = projectController;
+export default projectController;

@@ -1,6 +1,11 @@
 // server/middleware/uploadMiddleware.js
-const multer = require("multer");
-const path = require("path");
+import multer from "multer";
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Fix __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Storage engine
 const storage = multer.diskStorage({
@@ -25,4 +30,4 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage, fileFilter });
 
-module.exports = upload;
+export default upload;

@@ -1,8 +1,10 @@
-const express = require('express');
+// server/routes/userRoutes.js
+import express from 'express';
+import { registerClient } from '../controllers/userController.js';
+
 const router = express.Router();
-const userController = require('../controllers/userController');
 
-router.post('/register-client', userController.registerClient);
+// Route for client registration
+router.post('/register-client', registerClient);
 
-module.exports = router;
-
+export default router;

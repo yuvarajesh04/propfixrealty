@@ -1,12 +1,13 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-// For nearby facilities
+// Nearby facilities schema
 const nearbySchema = new mongoose.Schema({
   type: { type: String, required: true },
   name: { type: String, required: true },
   distance: { type: String, required: true },
 });
 
+// Project schema
 const projectSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
@@ -29,4 +30,4 @@ const projectSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Project", projectSchema);
+export default mongoose.model("Project", projectSchema);
