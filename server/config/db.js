@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// fix the deprecation warnings by setting the options below
 async function connectDB() {
   try {
     await mongoose.connect(
