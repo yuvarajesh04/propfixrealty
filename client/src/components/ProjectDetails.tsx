@@ -253,7 +253,7 @@ export default function ProjectDetails() {
           <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
             Home
           </Breadcrumb.Item>
-          <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/projects/${category}` }}>
+          <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/show-all-projects?search=${project.type.toLowerCase()}` }}>
             {Capitalize(project.type)}
           </Breadcrumb.Item>
           <Breadcrumb.Item active>{project.title}</Breadcrumb.Item>

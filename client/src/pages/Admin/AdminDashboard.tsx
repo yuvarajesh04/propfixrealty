@@ -14,7 +14,6 @@ interface User {
 
 interface Location {
   location: string;
-  price: string;
   des: string;
 }
 
@@ -22,7 +21,6 @@ const AdminDashboard: React.FC = () => {
   const [users, setUsers] = React.useState<User[]>([]);
   const [locationData, setLocationData] = React.useState<Location>({
     location: "",
-    price: "",
     des: `Explore real estate project in`,
   });
   const [addLocation, setAddLocation] = React.useState<boolean>(false);
@@ -67,7 +65,6 @@ const AdminDashboard: React.FC = () => {
     e.preventDefault();
     const formData = {
       location: locationData.location,
-      price: locationData.price,
       des: locationData.des + " " + locationData.location,
       createdBy: `${localStorage.getItem('name')}`
     }
@@ -83,7 +80,6 @@ const AdminDashboard: React.FC = () => {
     if (res.success) {
       setLocationData({
         location: '',
-        price: '',
         des: 'Explore real estate project in'
       })
     }
@@ -184,7 +180,7 @@ const AdminDashboard: React.FC = () => {
                 />
               </div>
 
-              <div className="form-group mb-3">
+              {/* <div className="form-group mb-3">
                 <label htmlFor="price" className="form-label">
                   Price
                 </label>
@@ -197,7 +193,7 @@ const AdminDashboard: React.FC = () => {
                   onChange={handleChange}
                   className="form-input form-control"
                 />
-              </div>
+              </div> */}
 
               {
                 message && (

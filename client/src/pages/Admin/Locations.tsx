@@ -90,7 +90,6 @@ const Location: React.FC = () => {
                     <tr>
                         <th scope="col">S.No</th>
                         <th scope="col">Location</th>
-                        <th scope="col">Price</th>
                         <th scope="col">Des</th>
                         <th scope="col">CreatedBy</th>
                         <th scope="col">Actions</th>
@@ -102,7 +101,6 @@ const Location: React.FC = () => {
                             <tr key={index}>
                                 <th scope="row">{index + 1}</th>
                                 <td>{loc.location}</td>
-                                <td>{loc.price}</td>
                                 <td>{loc.des}</td>
                                 <td>{loc.createdBy}</td>
                                 <td>
@@ -180,7 +178,7 @@ const Location: React.FC = () => {
                                     className="form-input form-control"
                                 />
                             </div>
-                            <div className="form-group mb-3">
+                            {/* <div className="form-group mb-3">
                                 <label htmlFor="price" className="form-label">
                                     Price
                                 </label>
@@ -193,7 +191,7 @@ const Location: React.FC = () => {
                                     onChange={handleChange}
                                     className="form-input form-control"
                                 />
-                            </div>
+                            </div> */}
                             {message && <p>{message}</p>}
                             <button
                                 type="submit"

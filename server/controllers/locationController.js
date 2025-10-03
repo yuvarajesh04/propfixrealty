@@ -3,9 +3,9 @@ import Location from "../models/locationModel.js";
 const locationController = {
   addLocation: async (req, res) => {
     try {
-      const { location, price, des, createdBy } = req.body;
+      const { location, des, createdBy } = req.body;
 
-      if (!location || !price || !des || !createdBy) {
+      if (!location || !des || !createdBy) {
         return res.status(400).json({
           success: false,
           message: "Give all required fields",
@@ -20,7 +20,7 @@ const locationController = {
           message: "Location already exist!",
         });
 
-      const newproj = new Location({ location, price, des, createdBy });
+      const newproj = new Location({ location, des, createdBy });
       await newproj.save();
 
       res.status(201).json({
@@ -56,8 +56,8 @@ const locationController = {
           message: "Id not found!",
         });
 
-      const { location, price } = req.body;
-      if (!location || !price)
+      const { location } = req.body;
+      if (!location)
         return res.status(400).json({
           success: false,
           message: "Could not find location and price",

@@ -5,13 +5,11 @@ const BASE_URL = 'https://propfixrealty.com/api/location'
 interface Payload {
     location: string,
     des: string,
-    price: string,
     createdBy: string
 }
 
 interface LocationType {
     location: string,
-    price: string,
     des: string,
     createdBy: string,
     _id?: string
@@ -23,7 +21,6 @@ const locationApi = {
 
             const bodyData = {
                 location: formData.location,
-                price: formData.price,
                 des: formData.des,
                 createdBy: formData.createdBy
             }
