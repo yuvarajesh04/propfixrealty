@@ -53,7 +53,7 @@ const projectApi = {
   // Get single project
   getSingleProject: async (id: string) => {
     try {
-      const res = await axios.get(`${BASE_URL}/projects/get-project/${id}`, {
+      const res = await axios.get(`${BASE_URL}/projects/get/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

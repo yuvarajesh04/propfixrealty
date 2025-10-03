@@ -17,6 +17,7 @@ export default function FindByCityCard({ city, description, price }: FindByCityC
   }, [navigate, city]);
 
   const formatCityName = useCallback((name: string) => {
+    console.log(price);
     return name.split(' ').map(word =>
       word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
     ).join(' ');
@@ -98,15 +99,14 @@ export default function FindByCityCard({ city, description, price }: FindByCityC
               fontSize: '0.8rem',
               fontWeight: 600,
               color: '#fff',
-              background: 'linear-gradient(135deg, #28a745, #20c997)',
               padding: '4px 10px',
               borderRadius: '12px',
               display: 'inline-flex',
               alignItems: 'center'
             }}
           >
-            <i className="" style={{ fontSize: '12px' }} />
-            {" " + price}
+            {/* <i className="" style={{ fontSize: '12px' }} />
+            {" " + price} */}
           </span>
         </div>
 
