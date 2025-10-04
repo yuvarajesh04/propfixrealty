@@ -49,7 +49,7 @@ const adminController = {
         });
       }
 
-      const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1d' });
+      const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '30d' });
 
       return res.status(200).json({
         token,
