@@ -4,10 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node server.js",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+  "dev": "node server.js",
+  "build": "vite build && vite build --ssr src/entry-server.tsx",
+  "start": "node dist/server.js"
   },
   "reactSnap": {
     "crawl": true,

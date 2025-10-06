@@ -7,11 +7,11 @@ import "../styles/Projects.css";
 import projectApi from "../services/projectApi";
 import propfixrealty from "../assets/profixrealtyicon.png";
 
-export default function Projects() {
+export default function Projects({ initialProjects = [] }: { initialProjects?: any[] }) {
   const [startIndex, setStartIndex] = useState(0);
   const [projectsPerPage, setProjectsPerPage] = useState(3);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [allProjects, setAllProjects] = useState<any[]>([]);
+  const [allProjects, setAllProjects] = useState(initialProjects);
   const [filteredProjects, setFilteredProjects] = useState<any[]>([]);
   const [activeType, setActiveType] = useState("All"); // ✅ track active filter
   const navigate = useNavigate();

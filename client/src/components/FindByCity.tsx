@@ -142,15 +142,14 @@ export default function FindByCity() {
           </div>
         ) : (
           <Row>
-            {cities.map((city, index) => (
-              <Col key={index} lg={4} md={6} sm={12} className="mb-4">
-                <FindByCityCard
-                  city={city.location}
-                  description={city.des}
-                  price={city.price}
-                />
-              </Col>
-            ))}
+            {Array.isArray(cities) && cities.slice(0, 6).map((city, index) => (
+            <Col key={index} lg={4} md={6} sm={12} className="mb-4">
+              <FindByCityCard
+                city={city.location}
+                description={city.des}
+              />
+            </Col>
+          ))}
           </Row>
         )}
       </Container>

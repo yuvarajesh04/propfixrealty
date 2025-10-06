@@ -5,10 +5,9 @@ import { useState, useCallback } from "react";
 interface FindByCityCardProp {
   city: string;
   description: string;
-  price: string;
 }
 
-export default function FindByCityCard({ city, description, price }: FindByCityCardProp) {
+export default function FindByCityCard({ city, description }: FindByCityCardProp) {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -93,7 +92,7 @@ export default function FindByCityCard({ city, description, price }: FindByCityC
 
         {/* Price */}
         <div className="mb-2">
-          <span
+          {/* <span
             style={{
               fontSize: '0.8rem',
               fontWeight: 600,
@@ -107,7 +106,7 @@ export default function FindByCityCard({ city, description, price }: FindByCityC
           >
             <i className="" style={{ fontSize: '12px' }} />
             {" " + price}
-          </span>
+          </span> */}
         </div>
 
         {/* Description */}

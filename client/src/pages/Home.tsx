@@ -38,7 +38,7 @@ export const logos = [
     { src: sidarthhomes, alt: "Sidarth Homes Logo", id: 13, bg: "dark" },
 ];
 
-export default function Home() {
+export default function Home({  initialData = {} }: { initialData?: any }) {
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "RealEstateAgent",
@@ -73,7 +73,7 @@ export default function Home() {
 
             <Hero />
             <ClientLogoCarousel logos={logos} />
-            <ProjectsPage />
+            <ProjectsPage initialProjects={initialData.projects} />
             <FindByCity />
             <About />
             <Contact />

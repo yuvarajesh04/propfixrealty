@@ -20,10 +20,15 @@ import AddNewProject from "./pages/Admin/AddNewProject";
 import Location from "./pages/Admin/Locations";
 import EditProject from "./pages/Admin/EditProject";
 
-function AppContent() {
+interface AppProps {
+  initialData?: any;
+}
+
+function AppContent({ initialData = {} }: AppProps) {
   const location = useLocation();
 
   React.useEffect(() => {
+    console.log("Initial Data:", initialData);
     AOS.init({
       duration: 1000,
       easing: "ease-in-out",
@@ -82,9 +87,9 @@ function AppContent() {
   );
 }
 
-function App() {
+function App(props: AppProps) {
   return (
-      <AppContent />
+      <AppContent {...props} />
   );
 }
 
