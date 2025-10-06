@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import FindByCityCard from "./cards/FindByCityCard";
 import "../styles/Projects.css";
 import { useNavigate, useLocation } from "react-router-dom";

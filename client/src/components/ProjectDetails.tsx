@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Carousel, Button, Spinner, Accordion, Breadcrumb } from "react-bootstrap";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import {
   FaMapMarkerAlt,
   FaBuilding,

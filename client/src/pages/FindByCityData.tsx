@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ProjectCard from "../components/cards/ProjectCard";
 import profixrealtyLogo from "../assets/profixrealtyicon.png";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import "../styles/Projects.css";
 import projectApi from "../services/projectApi";
 

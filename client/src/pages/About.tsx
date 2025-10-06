@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import about_img from "../assets/about_img1.jpg";
 import propfixrealty from "../assets/profixrealtyicon.png"
 

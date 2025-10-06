@@ -6,7 +6,12 @@ import "../index.css";
 const Navbar: React.FC = () => {
     const location = useLocation();
 
-    const admin = localStorage.getItem('token');
+    const [admin, setAdmin] = React.useState<string | null>(null);
+
+    React.useEffect(() => {
+        let admin = localStorage.getItem('token');
+        setAdmin(admin);
+    }, []);
 
     const menuItems = [
         { path: "/", label: "Home" },

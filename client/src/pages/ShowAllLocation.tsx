@@ -1,7 +1,7 @@
 import { Container, Row, Col, Form } from 'react-bootstrap';
 import LocationCard from '../components/cards/LocationCard';
 import React from 'react';
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import locationApi from '../services/locationApi';
 
 interface CityData {

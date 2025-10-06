@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProjectCard from "../components/cards/ProjectCard";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import projectApi from "../services/projectApi";
 
 const AllProjectsPage: React.FC = () => {

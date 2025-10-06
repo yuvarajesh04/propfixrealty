@@ -22,7 +22,6 @@ import mp from '../assets/clientlogos/mp.jpg';
 import sidarthhomes from '../assets/clientlogos/sidarthhomes.jpg';
 import urbantree from '../assets/clientlogos/urbantree.jpg';
 
-// Logos array
 export const logos = [
     { src: urbantree, alt: "Urbantree Projects Logo", id: 12 },
     { src: urbanrise, alt: "Urbanrise Projects Logo", id: 1 },
@@ -40,42 +39,38 @@ export const logos = [
 ];
 
 export default function Home() {
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "PropFix Realty",
+        "url": "https://propfixrealty.com",
+        "logo": "https://propfixrealty.com/propfixrealtyicon.png",
+        "sameAs": [
+            "https://www.facebook.com/propfixrealty",
+            "https://www.instagram.com/propfixrealty"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Your Street Address",
+            "addressLocality": "Chennai",
+            "addressRegion": "TN",
+            "postalCode": "600xxx",
+            "addressCountry": "IN"
+        },
+        "telephone": "+91-XXXXXXXXXX"
+    };
+
     return (
         <div className="home-page">
-            {/* SEO Meta Tags */}
             <Helmet>
                 <title>PropFix Realty | Best Real Estate Properties in Chennai</title>
                 <meta name="description" content="PropFix Realty offers premium residential and commercial properties in Chennai, Madurai, and nearby areas. Explore top real estate projects and connect with trusted developers." />
                 <meta name="keywords" content="real estate Chennai, properties in Chennai, plots in Madurai, real estate Madurai, residential projects, commercial projects" />
-                
-                {/* Structured Data JSON-LD */}
                 <script type="application/ld+json">
-                    {`
-                    {
-                        "@context": "https://schema.org",
-                        "@type": "RealEstateAgent",
-                        "name": "PropFix Realty",
-                        "url": "https://propfixrealty.com",
-                        "logo": "https://propfixrealty.com/propfixrealtyicon.png",
-                        "sameAs": [
-                            "https://www.facebook.com/propfixrealty",
-                            "https://www.instagram.com/propfixrealty"
-                        ],
-                        "address": {
-                            "@type": "PostalAddress",
-                            "streetAddress": "Your Street Address",
-                            "addressLocality": "Chennai",
-                            "addressRegion": "TN",
-                            "postalCode": "600xxx",
-                            "addressCountry": "IN"
-                        },
-                        "telephone": "+91-XXXXXXXXXX"
-                    }
-                    `}
+                    {JSON.stringify(structuredData)}
                 </script>
             </Helmet>
 
-            {/* Page Sections */}
             <Hero />
             <ClientLogoCarousel logos={logos} />
             <ProjectsPage />

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -84,9 +84,7 @@ function AppContent() {
 
 function App() {
   return (
-    <BrowserRouter>
       <AppContent />
-    </BrowserRouter>
   );
 }
 

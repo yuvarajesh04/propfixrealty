@@ -1,14 +1,13 @@
 import "../styles/Hero.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import backgroundImage from "../assets/test.jpg"; // ✅ Import image
+import { Helmet } from "react-helmet";
+import backgroundImage from "../assets/test.jpg";
 
 export default function Hero() {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
-  // Handle search form submit
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -16,7 +15,6 @@ export default function Hero() {
     }
   };
 
-  // Handle category button click
   const handleCategoryClick = (category: string) => {
     navigate(`/show-all-projects?search=${category.toLowerCase()}`);
   };
@@ -34,7 +32,6 @@ export default function Hero() {
           name="keywords"
           content="plots in Chennai, buy plots Chennai, villas Chennai, apartments Chennai, Propfix Realty"
         />
-        {/* ✅ preload imported background */}
         <link rel="preload" as="image" href={backgroundImage} />
       </Helmet>
 
@@ -42,14 +39,13 @@ export default function Hero() {
         className="hero-section d-flex justify-content-center align-items-center text-white text-center"
         style={{
           background: `url(${backgroundImage}) center center / cover no-repeat`,
-        }} // ✅ Apply background inline
+        }}
       >
         <div className="container">
           <h1 className="gradient-text heading-custom fw-bold mb-4">
             First Step to Your Dream Home
           </h1>
 
-          {/* Search Form */}
           <div className="search-container my-4 d-flex justify-content-center align-items-center">
             <form onSubmit={handleSearch} className="w-100 d-flex justify-content-center">
               <div className="input-group mx-auto" style={{ maxWidth: "500px" }}>
@@ -76,7 +72,6 @@ export default function Hero() {
             </form>
           </div>
 
-          {/* Category Buttons */}
           <div className="hero-features mt-4 d-flex justify-content-center gap-3 flex-wrap">
             {["Plots", "Villas", "Apartments"].map((category) => (
               <button
